@@ -146,7 +146,14 @@
     
     NSString *pid = self.deviceIdField.text;
     NSString *savecode = self.safeCodeField.text;
-    
+    if ([JJSUtil isBlankString:pid]) {
+        [JJSUtil showHUDWithMessage:@"请输入设备ID" autoHide:YES];
+        return;
+    }
+    if ([JJSUtil isBlankString:savecode]) {
+        [JJSUtil showHUDWithMessage:@"请输入设备安全码" autoHide:YES];
+        return;
+    }
     [[KinDeviceApi sharedKinDevice] bindDeviceByPid:pid withKey:savecode success:^(NSDictionary *data) {
         NSLog(@"%@",data);
         [JJSUtil hideHUD];

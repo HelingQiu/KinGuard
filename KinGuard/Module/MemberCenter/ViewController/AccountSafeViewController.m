@@ -174,6 +174,8 @@
 {
     [[KinGuartApi sharedKinGuard] loginOutWithMobile:self.accountInfo.acc success:^(NSDictionary *data) {
         [JJSUtil showHUDWithMessage:@"退出成功" autoHide:YES];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:KinGuard_UserInfo];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         
         self.view.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"LoginNavigationController"];
     } fail:^(NSString *error) {

@@ -10,6 +10,7 @@
 #import "SafeZoneModel.h"
 #import "SafeTableViewCell.h"
 #import "SafeZoneViewController.h"
+#import "AddSafeZoneViewController.h"
 
 @interface ElectronicViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -161,7 +162,9 @@
 - (void)addSafeZone:(id)sender
 {
     //跳转到添加安全区域界面
-    
+    AddSafeZoneViewController *safeController = [[AddSafeZoneViewController alloc] init];
+    safeController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:safeController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

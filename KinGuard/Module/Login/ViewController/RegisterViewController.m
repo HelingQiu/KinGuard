@@ -76,8 +76,16 @@
         [JJSUtil showHUDWithMessage:@"请输入手机号码" autoHide:YES];
         return;
     }
+    if (![JJSUtil isMobileNumber:phone]) {
+        [JJSUtil showHUDWithMessage:@"请输入11位手机号码" autoHide:YES];
+        return;
+    }
     if ([JJSUtil isBlankString:pwd1]) {
         [JJSUtil showHUDWithMessage:@"请输入密码" autoHide:YES];
+        return;
+    }
+    if (pwd1.length < 6 || pwd1.length > 20) {
+        [JJSUtil showHUDWithMessage:@"请输入6~20位密码" autoHide:YES];
         return;
     }
     if (![pwd1 isEqualToString:pwd2]) {

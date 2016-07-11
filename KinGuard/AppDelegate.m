@@ -65,6 +65,12 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
     /// Required - 注册 DeviceToken
     [JPUSHService registerDeviceToken:deviceToken];
+    [[KinDeviceApi sharedKinDevice] bindJpushWithRegisterid:[JPUSHService registrationID] success:^(NSDictionary *data) {
+        NSLog(@"%@",data);
+    } fail:^(NSString *error) {
+        NSLog(@"%@",error);
+    }];
+    
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
